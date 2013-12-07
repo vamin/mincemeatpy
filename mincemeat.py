@@ -219,7 +219,7 @@ class Server(asyncore.dispatcher, object):
         try:
             asyncore.loop(map=self.socket_map)
         except:
-            self.close_all()
+            asyncore.close_all(map=self.socket_map)
             raise
 
         return self.taskmanager.results
